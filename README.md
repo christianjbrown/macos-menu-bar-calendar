@@ -2,6 +2,8 @@
 
 A tiny calendar that lives in your Mac menu bar. Click the icon, see the month, click away. That's the whole app.
 
+If you've come from Windows, it's the calendar you get by clicking the clock in the taskbar: a quick look at the month and nothing else. macOS doesn't have one out of the box, and it's surprising how much you miss it. 🪟
+
 It's deliberately small. If all you want is a quick glance at "what's the date on Thursday week?", this is for you.
 
 | Light | Dark |
