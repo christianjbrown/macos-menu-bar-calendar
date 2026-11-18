@@ -1,19 +1,26 @@
 name: CI
 
+# The unit tests under the 100% coverage gate, then a release build.
+
 on:
   pull_request:
   push:
     branches: [main]
 
+# A newer push to a pull request makes the older run's answer irrelevant, so it is cancelled.
+# Pushes to main are grouped by commit, so they never cancel each other.
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
 
 jobs:
-  coverage:
-    name: Unit tests and 100% coverage
-    # The self-hosted Mac runner, not a paid GitHub-hosted one. The tests need a
-    # logged-in GUI session (status items, popovers, an end-to-end app launch).
+  gates:
+    name: Gates
+    # The self-hosted Mac runner. The tests need a logged-in GUI session
+    # (status items, popovers, an end-to-end app launch).
     runs-on: [self-hosted, macOS, ARM64, menu-bar-calendar]
     timeout-minutes: 20
     steps:
