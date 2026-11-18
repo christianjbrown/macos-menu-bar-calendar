@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  coverage:
+    name: Unit tests and 100% coverage
+    # The self-hosted Mac runner, not a paid GitHub-hosted one. The tests need a
+    # logged-in GUI session (status items, popovers, an end-to-end app launch).
+    runs-on: [self-hosted, macOS, ARM64, menu-bar-calendar]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: Unit tests with 100% coverage gate
+        run: ./scripts/coverage.sh
+      - name: Release build
+        run: ./build.sh
