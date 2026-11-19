@@ -18,7 +18,7 @@ It's deliberately small. If all you want is a quick glance at "what's the date o
 - Follows the system light or dark theme, always. No setting for it.
 - Starts the week on whatever day your macOS region settings say.
 - The app icon is the same calendar on a blue tile, drawn from the same vector shape at every size when you build.
-- Opens at login by default. Right-click the icon to switch that off, or to quit.
+- The first time it starts, it asks whether to open at login (yes, please 🙋). Right-click the icon to change your mind later, or to quit.
 - Speaks English, German, French, Spanish, Dutch and Danish. Month and day names follow your Mac's language and region.
 
 ### 🔭 Zooming out

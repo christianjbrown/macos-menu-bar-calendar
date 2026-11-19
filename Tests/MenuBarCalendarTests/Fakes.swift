@@ -72,6 +72,13 @@ final class FakeErrorPresenter: ErrorPresenting {
 }
 
 @MainActor
+final class FakeQuestion: LaunchAtLoginAsking {
+    var answer = true
+    private(set) var askCount = 0
+    func askToLaunchAtLogin() -> Bool { askCount += 1; return answer }
+}
+
+@MainActor
 final class FakeEvents: EventSource {
     var currentEvent: NSEvent?
 }
