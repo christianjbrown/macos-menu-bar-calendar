@@ -3,15 +3,25 @@
 set -euo pipefail
 cd "${0:A:h}"
 
-swift build -c release --product MenuBarCalendar 2>&1 | grep -v "search path .* not found" || true
-bin="$(swift build -c release --show-bin-path)/MenuBarCalendar"
-[[ -x "$bin" ]] || { echo "build failed" >&2; exit 1; }
+for product in MenuBarCalendar AppIconTool; do
+  swift build -c release --product "$product" 2>&1 | grep -v "search path .* not found" || true
+done
+bins="$(swift build -c release --show-bin-path)"
+bin="$bins/MenuBarCalendar"
+[[ -x "$bin" && -x "$bins/AppIconTool" ]] || { echo "build failed" >&2; exit 1; }
 
 app=build/MenuBarCalendar.app
 rm -rf "$app"
 mkdir -p "$app/Contents/MacOS"
 cp "$bin" "$app/Contents/MacOS/MenuBarCalendar"
 cp Support/Info.plist "$app/Contents/Info.plist"
+
+# The app icon is drawn from the menu bar icon's vector shapes at every size macOS asks for.
+iconset=build/AppIcon.iconset
+rm -rf "$iconset"
+"$bins/AppIconTool" "$iconset"
+mkdir -p "$app/Contents/Resources"
+iconutil -c icns "$iconset" -o "$app/Contents/Resources/AppIcon.icns"
 codesign --force --sign - "$app"
 echo "Built $app"
 

@@ -351,6 +351,23 @@ func coreTests() {
         try expect(StatusIconShape.page.contains(StatusIconShape.window))
         try expectEqual(StatusIconShape.size, CGSize(width: 21, height: 16))
     }
+
+    // MARK: AppIconShape
+
+    t.run("AppIconShape", "centres the calendar page on the tile") {
+        let glyph = StatusIconShape.page.applying(AppIconShape.glyphTransform)
+        try expect(abs(glyph.midX - AppIconShape.tile.midX) < 0.001)
+        try expect(abs(glyph.midY - AppIconShape.tile.midY) < 0.001)
+        try expect(abs(glyph.width - AppIconShape.glyphWidth) < 0.001)
+        try expect(AppIconShape.tile.contains(glyph))
+    }
+    t.run("AppIconShape", "lists every size an .iconset needs") {
+        let entries = AppIconShape.iconsetEntries
+        try expectEqual(entries.count, 10)
+        try expectEqual(entries.first!, AppIconShape.IconsetEntry(fileName: "icon_16x16.png", pixels: 16))
+        try expectEqual(entries[1], AppIconShape.IconsetEntry(fileName: "icon_16x16@2x.png", pixels: 32))
+        try expectEqual(entries.last!, AppIconShape.IconsetEntry(fileName: "icon_512x512@2x.png", pixels: 1024))
+    }
 }
 
 @MainActor

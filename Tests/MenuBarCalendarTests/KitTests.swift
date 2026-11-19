@@ -50,6 +50,32 @@ func kitTests() {
         try expect(rep.colorAt(x: 6, y: 6)!.alphaComponent < 0.1, "first row starts mid-week")
     }
 
+    // MARK: AppIconRenderer
+
+    t.run("AppIconRenderer", "draws a white calendar page on a blue tile") {
+        let rep = NSBitmapImageRep(data: AppIconRenderer.pngData(pixels: 1024))!
+        try expectEqual(rep.pixelsWide, 1024)
+        try expectEqual(rep.pixelsHigh, 1024)
+        let corner = rep.colorAt(x: 2, y: 2)!
+        try expect(corner.alphaComponent < 0.01, "outside the tile is clear")
+        let tile = rep.colorAt(x: 150, y: 512)!.usingColorSpace(.sRGB)!
+        try expect(tile.blueComponent > 0.9 && tile.redComponent < 0.5, "tile is blue")
+        // The header band sits above the tile's centre, the empty first day cell to the left of the dots.
+        let header = rep.colorAt(x: 512, y: 320)!.usingColorSpace(.sRGB)!
+        try expect(header.redComponent > 0.99 && header.blueComponent > 0.99, "header band is white")
+        let firstCell = rep.colorAt(x: 380, y: 452)!.usingColorSpace(.sRGB)!
+        try expect(firstCell.redComponent < 0.5, "first row starts mid-week")
+    }
+    t.run("AppIconWriter", "writes every image of the iconset") {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        try AppIconWriter.writeIconset(to: directory)
+        for entry in AppIconShape.iconsetEntries {
+            let rep = NSBitmapImageRep(data: try Data(contentsOf: directory.appendingPathComponent(entry.fileName)))!
+            try expectEqual(rep.pixelsWide, entry.pixels, entry.fileName)
+        }
+    }
+
     // MARK: Event translation
 
     t.run("Key", "reads arrows and page keys from key events") {
