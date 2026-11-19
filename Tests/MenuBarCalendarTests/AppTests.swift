@@ -172,27 +172,70 @@ func appTests() {
         spinRunLoop()
         try expectEqual(count, 4)
     }
-    t.run("LaunchAtLoginDefault", "turns Launch at Login on once") {
+    t.run("LaunchAtLoginPrompt", "asks once and turns Launch at Login on for a yes") {
         let loginItem = FakeLoginItem()
         let settings = FakeSettings()
-        let defaulter = LaunchAtLoginDefault(loginItem: loginItem, settings: settings)
-        defaulter.apply()
+        let question = FakeQuestion()
+        let errors = FakeErrorPresenter()
+        let prompt = LaunchAtLoginPrompt(loginItem: loginItem, settings: settings, question: question, errorPresenter: errors)
+        prompt.apply()
+        try expectEqual(question.askCount, 1)
         try expectEqual(loginItem.registerCount, 1)
-        try expectEqual(settings.values[LaunchAtLoginDefault.appliedKey], true)
+        try expectEqual(settings.values[LaunchAtLoginPrompt.askedKey], true)
         try loginItem.unregister()
-        defaulter.apply()
+        prompt.apply()
+        try expectEqual(question.askCount, 1, "it never asks twice")
         try expectEqual(loginItem.registerCount, 1, "switching it off sticks")
     }
-    t.run("LaunchAtLoginDefault", "tries again next launch if registering fails") {
+    t.run("LaunchAtLoginPrompt", "leaves Launch at Login off for a no, and does not ask again") {
+        let loginItem = FakeLoginItem()
+        let settings = FakeSettings()
+        let question = FakeQuestion()
+        question.answer = false
+        let prompt = LaunchAtLoginPrompt(loginItem: loginItem, settings: settings, question: question,
+                                         errorPresenter: FakeErrorPresenter())
+        prompt.apply()
+        prompt.apply()
+        try expectEqual(question.askCount, 1)
+        try expectEqual(loginItem.registerCount, 0)
+        try expectEqual(settings.values[LaunchAtLoginPrompt.askedKey], true)
+    }
+    t.run("LaunchAtLoginPrompt", "does not ask people who already have the app") {
+        let settings = FakeSettings()
+        settings.values["LaunchAtLoginDefaultApplied"] = true
+        let question = FakeQuestion()
+        LaunchAtLoginPrompt(loginItem: FakeLoginItem(), settings: settings, question: question,
+                            errorPresenter: FakeErrorPresenter()).apply()
+        try expectEqual(question.askCount, 0)
+    }
+    t.run("LaunchAtLoginPrompt", "shows the error if registering fails, and does not ask again") {
         let loginItem = FakeLoginItem()
         loginItem.error = FakeError()
         let settings = FakeSettings()
-        LaunchAtLoginDefault(loginItem: loginItem, settings: settings).apply()
-        try expectEqual(settings.values[LaunchAtLoginDefault.appliedKey], nil)
-        loginItem.error = nil
-        LaunchAtLoginDefault(loginItem: loginItem, settings: settings).apply()
-        try expectEqual(loginItem.registerCount, 2)
-        try expectEqual(settings.values[LaunchAtLoginDefault.appliedKey], true)
+        let question = FakeQuestion()
+        let errors = FakeErrorPresenter()
+        let prompt = LaunchAtLoginPrompt(loginItem: loginItem, settings: settings, question: question, errorPresenter: errors)
+        prompt.apply()
+        prompt.apply()
+        try expectEqual(errors.errors.count, 1)
+        try expectEqual(question.askCount, 1)
+    }
+    t.run("AlertLaunchAtLoginQuestion", "asks in the user's language with Yes as the default") {
+        let activator = FakeActivator()
+        let question = AlertLaunchAtLoginQuestion(strings: .german, activator: activator)
+        let alert = question.makeAlert()
+        try expectEqual(alert.messageText, AppStrings.german.launchAtLoginQuestion)
+        try expectEqual(alert.informativeText, AppStrings.german.launchAtLoginQuestionDetail)
+        try expectEqual(alert.buttons.map(\.title), ["Ja", "Nein"])
+        try expectEqual(alert.buttons[0].keyEquivalent, "\r")
+        try expectEqual(alert.buttons[1].keyEquivalent, AlertLaunchAtLoginQuestion.escapeKeyEquivalent)
+        try expect(AlertLaunchAtLoginQuestion.isYes(.alertFirstButtonReturn))
+        try expect(!AlertLaunchAtLoginQuestion.isYes(.alertSecondButtonReturn))
+        let closer = Timer(timeInterval: 0.2, repeats: false) { _ in MainActor.assumeIsolated { NSApp.abortModal() } }
+        RunLoop.main.add(closer, forMode: .common)
+        try expect(!question.askToLaunchAtLogin(), "closing it without an answer is a no")
+        closer.invalidate()
+        try expectEqual(activator.activations, [true])
     }
     t.run("SystemClock", "reads the current time") {
         let before = Date()
@@ -211,6 +254,7 @@ func appTests() {
         let settings = FakeSettings()
         let menuPresenter = FakeMenuPresenter()
         let errorPresenter = FakeErrorPresenter()
+        let question = FakeQuestion()
         let events = FakeEvents()
         let activator = FakeActivator()
         let controller: AppController
@@ -219,7 +263,8 @@ func appTests() {
             controller = AppController(dependencies: .init(
                 strings: .french, statusBar: NSStatusBar.system, presenter: presenter, today: today,
                 dayChanges: dayChanges, loginItem: loginItem,
-                launchAtLoginDefault: LaunchAtLoginDefault(loginItem: loginItem, settings: settings),
+                launchAtLoginPrompt: LaunchAtLoginPrompt(loginItem: loginItem, settings: settings, question: question,
+                                                         errorPresenter: errorPresenter),
                 menuPresenter: menuPresenter, errorPresenter: errorPresenter, events: events, activator: activator))
         }
 
@@ -228,7 +273,7 @@ func appTests() {
         }
     }
 
-    t.run("AppController", "puts a localised icon in the menu bar and applies the login default") {
+    t.run("AppController", "puts a localised icon in the menu bar and asks about Launch at Login") {
         let h = Harness()
         defer { h.tearDown() }
         h.controller.start()
@@ -237,6 +282,7 @@ func appTests() {
         try expect(item.button!.image!.isTemplate)
         try expectEqual(item.button!.toolTip, "Calendrier")
         try expect(item.button!.target === h.controller)
+        try expectEqual(h.question.askCount, 1)
         try expectEqual(h.loginItem.registerCount, 1)
         h.dayChanges.onChange!()
         try expectEqual(h.today.refreshCount, 1)

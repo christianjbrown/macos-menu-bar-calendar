@@ -390,9 +390,11 @@ func localisationTests() {
         try expectEqual(AppStrings.byLanguage.count, 6)
         for (code, strings) in AppStrings.byLanguage {
             let all = [strings.calendar, strings.previous, strings.next,
-                       strings.launchAtLogin, strings.quit, strings.launchAtLoginFailed]
+                       strings.launchAtLogin, strings.quit, strings.launchAtLoginFailed,
+                       strings.launchAtLoginQuestion, strings.launchAtLoginQuestionDetail, strings.yes, strings.no]
             try expect(all.allSatisfy { !$0.isEmpty }, "\(code) has an empty string")
             try expect(strings.quit.contains("MenuBarCalendar"), "\(code) quit names the app")
+            try expect(strings.launchAtLoginQuestion.contains("MenuBarCalendar"), "\(code) question names the app")
             if code != "en" {
                 try expect(strings != .english, "\(code) is translated")
             }

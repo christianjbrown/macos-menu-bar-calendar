@@ -11,7 +11,7 @@ public final class AppController: NSObject {
         let today: TodayRefreshing
         let dayChanges: DayChangeSource
         let loginItem: LoginItemService
-        let launchAtLoginDefault: LaunchAtLoginDefault
+        let launchAtLoginPrompt: LaunchAtLoginPrompt
         let menuPresenter: MenuPresenting
         let errorPresenter: ErrorPresenting
         let events: EventSource
@@ -19,7 +19,7 @@ public final class AppController: NSObject {
 
         public init(strings: AppStrings, statusBar: StatusBarProviding, presenter: CalendarPresenting, today: TodayRefreshing,
                     dayChanges: DayChangeSource, loginItem: LoginItemService,
-                    launchAtLoginDefault: LaunchAtLoginDefault, menuPresenter: MenuPresenting,
+                    launchAtLoginPrompt: LaunchAtLoginPrompt, menuPresenter: MenuPresenting,
                     errorPresenter: ErrorPresenting, events: EventSource, activator: AppActivating) {
             self.strings = strings
             self.statusBar = statusBar
@@ -27,7 +27,7 @@ public final class AppController: NSObject {
             self.today = today
             self.dayChanges = dayChanges
             self.loginItem = loginItem
-            self.launchAtLoginDefault = launchAtLoginDefault
+            self.launchAtLoginPrompt = launchAtLoginPrompt
             self.menuPresenter = menuPresenter
             self.errorPresenter = errorPresenter
             self.events = events
@@ -54,8 +54,8 @@ public final class AppController: NSObject {
         button.action = #selector(statusItemClicked(_:))
         button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         statusItem = item
-        dependencies.launchAtLoginDefault.apply()
         dependencies.dayChanges.start { [weak self] in self?.dependencies.today.refreshToday() }
+        dependencies.launchAtLoginPrompt.apply()
     }
 
     @objc func statusItemClicked(_ sender: NSStatusBarButton) {
