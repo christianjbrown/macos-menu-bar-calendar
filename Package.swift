@@ -11,6 +11,8 @@ let package = Package(
         .target(name: "MenuBarCalendarKit", dependencies: ["CalendarCore"]),
         // The app entry point: wires the composition root into NSApplication.
         .executableTarget(name: "MenuBarCalendar", dependencies: ["MenuBarCalendarKit"]),
+        // Build-time helper: draws the app icon's .iconset from the same shapes as the menu bar icon.
+        .executableTarget(name: "AppIconTool", dependencies: ["MenuBarCalendarKit"], path: "Tools/AppIconTool"),
         // XCTest and Swift Testing do not build with the Command Line Tools alone,
         // so the unit tests are a plain executable: `swift run MenuBarCalendarTests`.
         .executableTarget(
