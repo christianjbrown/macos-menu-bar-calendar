@@ -13,6 +13,9 @@ let package = Package(
         .executableTarget(name: "MenuBarCalendar", dependencies: ["MenuBarCalendarKit"]),
         // Build-time helper: draws the app icon's .iconset from the same shapes as the menu bar icon.
         .executableTarget(name: "AppIconTool", dependencies: ["MenuBarCalendarKit"], path: "Tools/AppIconTool"),
+        // Draws the Mac App Store screenshots from the real calendar view: `swift run StoreScreenshotTool <folder>`.
+        .executableTarget(name: "StoreScreenshotTool", dependencies: ["CalendarCore", "MenuBarCalendarKit"],
+                          path: "Tools/StoreScreenshotTool"),
         // XCTest and Swift Testing do not build with the Command Line Tools alone,
         // so the unit tests are a plain executable: `swift run MenuBarCalendarTests`.
         .executableTarget(
