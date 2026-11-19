@@ -6,7 +6,9 @@ If you've come from Windows, it's the calendar you get by clicking the clock in 
 
 It's deliberately small. If all you want is a quick glance at "what's the date on Thursday week?", this is for you.
 
-🛍️ **Get it free on the [Mac App Store](https://apps.apple.com/app/id6836826594)**, or build it yourself (see below).
+<a href="https://apps.apple.com/app/id6836826594"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/badges/mac-app-store-white.svg"><img src="docs/badges/mac-app-store-black.svg" alt="Download on the Mac App Store" height="40"></picture></a>
+
+It's free. Or build it yourself (see below).
 
 | Light | Dark |
 | --- | --- |
