@@ -1,0 +1,1 @@
+Un petit calendrier dans la barre des menus. Un clic, le mois s’affiche, et c’est tout.

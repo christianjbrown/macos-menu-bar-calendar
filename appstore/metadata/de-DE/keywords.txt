@@ -1,0 +1,1 @@
+Kalender,Monat,Datum,Menüleiste,Mini,Taskleiste,Windows,Woche,heute,Jahr,einfach,Tage,Überblick

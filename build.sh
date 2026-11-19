@@ -11,19 +11,7 @@ bin="$bins/MenuBarCalendar"
 [[ -x "$bin" && -x "$bins/AppIconTool" ]] || { echo "build failed" >&2; exit 1; }
 
 app=build/MenuBarCalendar.app
-rm -rf "$app"
-mkdir -p "$app/Contents/MacOS"
-cp "$bin" "$app/Contents/MacOS/MenuBarCalendar"
-cp Support/Info.plist "$app/Contents/Info.plist"
-
-# The app icon is drawn from the menu bar icon's vector shapes at every size macOS asks for.
-iconset=build/AppIcon.iconset
-rm -rf "$iconset"
-"$bins/AppIconTool" "$iconset"
-mkdir -p "$app/Contents/Resources"
-iconutil -c icns "$iconset" -o "$app/Contents/Resources/AppIcon.icns"
-# The calendar shape comes from Bootstrap Icons, whose MIT licence travels with the app.
-cp -R Support/Licenses "$app/Contents/Resources/"
+scripts/assemble-app.sh "$bin" "$bins/AppIconTool" "$app"
 codesign --force --sign - "$app"
 echo "Built $app"
 

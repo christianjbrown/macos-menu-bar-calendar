@@ -1,0 +1,12 @@
+Un pequeño calendario que vive en la barra de menús. Haz clic en el icono, mira el mes y haz clic fuera. Eso es toda la app.
+
+Si vienes de Windows, es el calendario que aparece al hacer clic en el reloj de la barra de tareas: un vistazo rápido al mes y nada más.
+
+• El día de hoy aparece resaltado, y la semana empieza el día que indique tu configuración regional.
+• Haz clic en el nombre del mes para ver todo el año, o en el año para elegir otro.
+• Las flechas del teclado mueven el día seleccionado. Re Pág y Av Pág, la rueda del ratón o los botones de flecha pasan los meses.
+• Se adapta al modo claro y al oscuro.
+• Pregunta una vez si quieres que se abra al iniciar sesión. Haz clic derecho en el icono para cambiarlo.
+• Habla español, inglés, alemán, francés, neerlandés y danés.
+
+Lo que no hace, a propósito: sin eventos, sin cuentas, sin ventana de ajustes, sin permisos que conceder. No recoge ningún dato y nunca se conecta a internet.

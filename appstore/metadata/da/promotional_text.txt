@@ -1,0 +1,1 @@
+En lille kalender i menulinjen. Klik, se måneden, og fortsæt med det, du var i gang med.

@@ -1,0 +1,1 @@
+calendario,mes,fecha,barra de menús,mini,barra de tareas,windows,semana,hoy,año,sencillo,días

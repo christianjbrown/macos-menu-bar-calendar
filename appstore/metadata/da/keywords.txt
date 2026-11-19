@@ -1,0 +1,1 @@
+kalender,måned,dato,menulinje,mini,proceslinje,windows,uge,i dag,år,enkel,dage,overblik

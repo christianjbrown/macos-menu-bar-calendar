@@ -1,0 +1,1 @@
+kalender,maand,datum,menubalk,mini,taakbalk,windows,week,vandaag,jaar,eenvoudig,dagen,overzicht

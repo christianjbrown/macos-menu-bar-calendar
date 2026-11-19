@@ -56,6 +56,8 @@ Run `./build.sh` on its own to build `build/MenuBarCalendar.app` without install
 
 The app is ad-hoc signed, which is fine for running on your own Mac.
 
+Heading for the Mac App Store? `scripts/app-store.sh` makes a universal, sandboxed build and has Xcode sign it. That one needs full Xcode. The listing, screenshots and steps live in [appstore/](appstore/README.md). 🛍️
+
 ## 🐛 Gotchas
 
 - `swift build` prints a couple of `search path ... not found` linker warnings with the Command Line Tools. They're harmless, and `build.sh` hides them.

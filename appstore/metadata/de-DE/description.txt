@@ -1,0 +1,12 @@
+Ein kleiner Kalender, der in der Menüleiste wohnt. Auf das Symbol klicken, den Monat sehen, wegklicken. Mehr ist es nicht.
+
+Wer Windows kennt: Es ist der Kalender, der sich öffnet, wenn man in der Taskleiste auf die Uhr klickt. Ein schneller Blick auf den Monat, sonst nichts.
+
+• Heute ist hervorgehoben, und die Woche beginnt mit dem Tag, den die Regionseinstellungen vorgeben.
+• Ein Klick auf den Monatsnamen zeigt das ganze Jahr, ein Klick auf das Jahr wählt ein anderes.
+• Die Pfeiltasten bewegen den ausgewählten Tag. Bild auf und Bild ab, das Mausrad oder die Pfeilschaltflächen blättern durch die Monate.
+• Passt sich dem hellen und dunklen Modus an.
+• Fragt einmal, ob er beim Anmelden öffnen soll. Ein Rechtsklick auf das Symbol ändert das später.
+• Spricht Deutsch, Englisch, Französisch, Spanisch, Niederländisch und Dänisch.
+
+Was bewusst fehlt: keine Termine, keine Konten, kein Einstellungsfenster, keine Berechtigungen. Er sammelt nichts und geht nie online.
