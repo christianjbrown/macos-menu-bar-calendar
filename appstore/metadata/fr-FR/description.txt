@@ -1,0 +1,12 @@
+Un petit calendrier qui vit dans la barre des menus. Cliquez sur l’icône, regardez le mois, cliquez ailleurs. C’est toute l’app.
+
+Si vous venez de Windows, c’est le calendrier qui s’ouvre quand on clique sur l’horloge de la barre des tâches : un coup d’œil au mois, rien de plus.
+
+• Aujourd’hui est mis en évidence, et la semaine commence le jour indiqué par vos réglages de région.
+• Cliquez sur le nom du mois pour voir toute l’année, ou sur l’année pour en choisir une autre.
+• Les flèches du clavier déplacent le jour sélectionné. Page précédente et Page suivante, la molette ou les boutons fléchés font défiler les mois.
+• Suit le mode clair et le mode sombre.
+• Demande une fois s’il doit s’ouvrir à la connexion. Un clic droit sur l’icône permet de changer d’avis.
+• Parle français, anglais, allemand, espagnol, néerlandais et danois.
+
+Ce qu’il ne fait pas, volontairement : pas d’événements, pas de comptes, pas de fenêtre de réglages, aucune autorisation à accorder. Il ne collecte rien et ne se connecte jamais à Internet.

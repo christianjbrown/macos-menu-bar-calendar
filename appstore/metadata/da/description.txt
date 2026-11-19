@@ -1,0 +1,12 @@
+En lille kalender, der bor i menulinjen. Klik på symbolet, se måneden, klik væk. Det er hele appen.
+
+Kender du Windows, er det kalenderen, der kommer frem, når du klikker på uret i proceslinjen: et hurtigt kig på måneden og intet andet.
+
+• Dagen i dag er fremhævet, og ugen starter på den dag, dine områdeindstillinger siger.
+• Klik på månedens navn for at se hele året, eller på året for at vælge et andet.
+• Piletasterne flytter den valgte dag. Page Up og Page Down, rullehjulet eller pileknapperne bladrer gennem månederne.
+• Følger lys og mørk tilstand.
+• Spørger én gang, om den skal åbne ved login. Højreklik på symbolet for at ændre det senere.
+• Taler dansk, engelsk, tysk, fransk, spansk og hollandsk.
+
+Det, den bevidst ikke gør: ingen begivenheder, ingen konti, intet indstillingsvindue, ingen tilladelser. Den indsamler intet og går aldrig online.

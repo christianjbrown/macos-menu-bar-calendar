@@ -1,0 +1,1 @@
+Un pequeño calendario en la barra de menús. Haz clic, mira el mes y sigue con lo tuyo.

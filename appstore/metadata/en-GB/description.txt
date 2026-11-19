@@ -1,0 +1,12 @@
+A tiny calendar that lives in your menu bar. Click the icon, see the month, click away. That's the whole app.
+
+If you've used Windows, it's the calendar you get by clicking the clock in the taskbar: a quick look at the month and nothing else.
+
+• Today is highlighted, and the week starts on the day your region settings say.
+• Click the month name to see the whole year, or the year to pick another one.
+• Arrow keys move the selected day. Page Up and Page Down, the scroll wheel or the arrow buttons flip through the months.
+• Follows light and dark mode.
+• Asks once whether to open at login. Right-click the icon to change your mind.
+• Speaks English, German, French, Spanish, Dutch and Danish.
+
+What it leaves out, on purpose: no events, no accounts, no settings window, no permissions to grant. It collects nothing and never goes online.

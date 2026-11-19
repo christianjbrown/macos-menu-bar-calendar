@@ -1,0 +1,5 @@
+MenuBarCalendar is a menu bar app. It has no Dock icon and no window of its own.
+
+On first launch it asks whether to open at login. After that, click the calendar icon near the right of the menu bar to open the month view. Click the month name to see the year, or the year to pick another year. Right-click the icon for Launch at Login and Quit.
+
+No account, sign-in or network connection is needed, and the app asks for no permissions.

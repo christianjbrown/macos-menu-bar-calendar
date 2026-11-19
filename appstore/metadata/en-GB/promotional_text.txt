@@ -1,0 +1,1 @@
+A tiny calendar in your menu bar. Click it, see the month, click away.

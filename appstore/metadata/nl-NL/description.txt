@@ -1,0 +1,12 @@
+Een kleine kalender die in de menubalk woont. Klik op het symbool, bekijk de maand, klik weg. Dat is de hele app.
+
+Ken je Windows? Het is de kalender die verschijnt als je op de klok in de taakbalk klikt: even snel naar de maand kijken en verder niets.
+
+• Vandaag is gemarkeerd, en de week begint op de dag die je regio-instellingen aangeven.
+• Klik op de naam van de maand om het hele jaar te zien, of op het jaar om een ander te kiezen.
+• De pijltoetsen verplaatsen de geselecteerde dag. Page Up en Page Down, het scrollwiel of de pijlknoppen bladeren door de maanden.
+• Volgt de lichte en donkere modus.
+• Vraagt één keer of hij moet openen bij inloggen. Klik met de rechtermuisknop op het symbool om dat later te wijzigen.
+• Spreekt Nederlands, Engels, Duits, Frans, Spaans en Deens.
+
+Wat er bewust niet in zit: geen afspraken, geen accounts, geen instellingenvenster, geen toestemmingen. Hij verzamelt niets en gaat nooit online.

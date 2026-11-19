@@ -1,0 +1,1 @@
+calendar,month,date,menubar,menu bar,mini,taskbar,windows,week,today,glance,simple,days,year
