@@ -18,22 +18,17 @@ It's free. Or build it yourself (see below).
 
 - Shows a calendar-page icon in the menu bar: <picture><source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/menu-bar-icon-dark.png"><img src="docs/screenshots/menu-bar-icon-light.png" alt="the menu bar icon" height="16"></picture>
 - Click it for a popover with the current month. Today is highlighted in blue.
-- Click the month name to pick a month, or the year to pick a year.
+- Click **November** to see the twelve months of the year. Click **2026** to see twelve years: five before, the current one and six after. Pick a year to see its months, and a month to get back to its days.
+- Every time you open it, it starts on this month with today selected, wherever you left it.
 - Follows the system light or dark theme, always. No setting for it.
 - Starts the week on whatever day your macOS region settings say.
 - The app icon is the same calendar on a blue tile, drawn from the same vector shape at every size when you build.
 - The first time it starts, it asks whether to open at login (yes, please 🙋). Right-click the icon to change your mind later, or to quit.
-- Speaks English, German, French, Spanish, Dutch and Danish. Month and day names follow your Mac's language and region.
-
-### 🔭 Zooming out
-
-Click **November** to see the twelve months of the year. Click **2026** to see twelve years: five before, the current one and six after. Pick a year to see its months, and a month to get back to its days.
+- Available in English, German, French, Spanish, Dutch and Danish. Month and day names follow your Mac's language and region.
 
 | Months | Years |
 | --- | --- |
 | ![The month picker](docs/screenshots/months-light.png) | ![The year picker](docs/screenshots/years-dark.png) |
-
-Every time you open the calendar it starts on this month with today selected, wherever you left it.
 
 ### ⌨️ Getting around
 
@@ -43,13 +38,17 @@ Every time you open the calendar it starts on this month with today selected, wh
 | Move the selected day | Arrow keys |
 | Close | `Esc` or click anywhere else |
 
-## 🙅 What it doesn't do
+## 💡 Tip
 
-On purpose: no calendar events, no adding events, no "open in Calendar" link, no clock or date text in the menu bar, no themes, no preferences window, no auto-updater, no global shortcut. Fewer moving parts, nothing to configure, no permissions to grant.
+If your menu bar is crowded, a notched MacBook can hide new icons behind the notch. Cmd-drag icons around to make room.
 
-## 🛠️ Build and install
+## 📥 Install
 
-The easy way is the [Mac App Store](https://apps.apple.com/app/id6836826594). To build it yourself, you need macOS 13 or later. Full Xcode is not required, just the Command Line Tools.
+Get it free from the [Mac App Store](https://apps.apple.com/app/id6836826594). It needs macOS 13 or later.
+
+## 🛠️ Build
+
+Rather build it yourself? You need macOS 13 or later. Full Xcode is not required, just the Command Line Tools.
 
 ```sh
 xcode-select --install  # Command Line Tools; says "already installed" if you have them
@@ -60,12 +59,9 @@ Run `./build.sh` on its own to build `build/MenuBarCalendar.app` without install
 
 The app is ad-hoc signed, which is fine for running on your own Mac.
 
+`swift build` prints a couple of `search path ... not found` linker warnings with the Command Line Tools. They're harmless, and `build.sh` hides them.
+
 Heading for the Mac App Store? `scripts/app-store.sh` makes a universal, sandboxed build and has Xcode sign it. That one needs full Xcode. The listing, screenshots and steps live in [appstore/](appstore/README.md). 🛍️
-
-## 🐛 Gotchas
-
-- `swift build` prints a couple of `search path ... not found` linker warnings with the Command Line Tools. They're harmless, and `build.sh` hides them.
-- If your menu bar is crowded, a notched MacBook can hide new icons behind the notch. Cmd-drag icons around to make room.
 
 ## 🎨 Credits
 
