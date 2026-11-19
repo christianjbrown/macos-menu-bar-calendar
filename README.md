@@ -6,6 +6,8 @@ If you've come from Windows, it's the calendar you get by clicking the clock in 
 
 It's deliberately small. If all you want is a quick glance at "what's the date on Thursday week?", this is for you.
 
+🛍️ **Get it free on the [Mac App Store](https://apps.apple.com/app/id6836826594)**, or build it yourself (see below).
+
 | Light | Dark |
 | --- | --- |
 | ![The month view in light mode](docs/screenshots/days-light.png) | ![The month view in dark mode](docs/screenshots/days-dark.png) |
@@ -45,7 +47,7 @@ On purpose: no calendar events, no adding events, no "open in Calendar" link, no
 
 ## 🛠️ Build and install
 
-You need macOS 13 or later. Full Xcode is not required, just the Command Line Tools.
+The easy way is the [Mac App Store](https://apps.apple.com/app/id6836826594). To build it yourself, you need macOS 13 or later. Full Xcode is not required, just the Command Line Tools.
 
 ```sh
 xcode-select --install  # Command Line Tools; says "already installed" if you have them
