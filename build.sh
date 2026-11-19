@@ -22,6 +22,8 @@ rm -rf "$iconset"
 "$bins/AppIconTool" "$iconset"
 mkdir -p "$app/Contents/Resources"
 iconutil -c icns "$iconset" -o "$app/Contents/Resources/AppIcon.icns"
+# The calendar shape comes from Bootstrap Icons, whose MIT licence travels with the app.
+cp -R Support/Licenses "$app/Contents/Resources/"
 codesign --force --sign - "$app"
 echo "Built $app"
 

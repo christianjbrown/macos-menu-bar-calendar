@@ -2,6 +2,7 @@ import CoreGraphics
 
 /// The menu bar icon's geometry: a calendar page with a solid header band and a grid of dots.
 /// Coordinates are flipped (top-left origin) in points.
+/// Adapted from the `calendar3` icon in Bootstrap Icons (MIT, see Support/Licenses/bootstrap-icons.txt).
 public enum StatusIconShape {
     public static let size = CGSize(width: 21, height: 16)
     public static let page = CGRect(x: 2, y: 0, width: 17, height: 16)

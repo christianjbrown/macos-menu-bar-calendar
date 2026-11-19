@@ -17,6 +17,7 @@ It's deliberately small. If all you want is a quick glance at "what's the date o
 - Click the month name to pick a month, or the year to pick a year.
 - Follows the system light or dark theme, always. No setting for it.
 - Starts the week on whatever day your macOS region settings say.
+- The app icon is the same calendar on a blue tile, drawn from the same vector shape at every size when you build.
 - Opens at login by default. Right-click the icon to switch that off, or to quit.
 - Speaks English, German, French, Spanish, Dutch and Danish. Month and day names follow your Mac's language and region.
 
@@ -59,6 +60,10 @@ The app is ad-hoc signed, which is fine for running on your own Mac.
 
 - `swift build` prints a couple of `search path ... not found` linker warnings with the Command Line Tools. They're harmless, and `build.sh` hides them.
 - If your menu bar is crowded, a notched MacBook can hide new icons behind the notch. Cmd-drag icons around to make room.
+
+## 🎨 Credits
+
+The calendar icon, in the menu bar and as the app icon, is adapted from `calendar3` in [Bootstrap Icons](https://icons.getbootstrap.com/), used under the MIT licence. A copy of that licence is in [Support/Licenses/bootstrap-icons.txt](Support/Licenses/bootstrap-icons.txt) and ships inside the app.
 
 ## 🤝 Contributing
 
